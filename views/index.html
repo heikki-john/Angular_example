@@ -1,0 +1,16 @@
+<!doctype html>
+<html ng-app="root_module">  <!-- direktiivi (= htmln attribuutti), ng kertoo että on angular. root_module itse annettu nimi johon viitataan example_module.js:ssä -->
+    <head>
+        <meta charset="utf-8"/>
+        <title>Hello Angular</title>
+    </head>
+    <body>
+        
+        <input type="text" ng-model="person_name"/>
+        <br/>
+        <p>You typed: {{person_name}}</p>
+        
+        <script src="../lib/angular.min.js"></script>
+        <script src="../scripts/example_module.js"></script>
+    </body>
+</html>
