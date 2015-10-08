@@ -5,11 +5,15 @@
         <title>Hello Angular</title>
     </head>
     <body>
-        
+        <div ng-controller="personController">
+            <p>Controller data: {{person.some_data}}</p>
+            <p>Controller data: {{person.age}}</p>
+        </div>
         <input type="text" ng-model="person_name"/>
         <br/>
         <p>You typed: {{person_name}}</p>
         
+        <scrit src="../lib/jquery-2.1.4.js"></scrit>
         <script src="../lib/angular.min.js"></script>
         <script src="../scripts/example_module.js"></script>
     </body>
