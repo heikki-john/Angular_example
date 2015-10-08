@@ -23,8 +23,10 @@ my_module.controller('personController', function($scope){
         jsonp: "jsonp",
         //success functio jos kysely onnistuu tjs. funktiolle pari parametriä voisi olla kolmekin, ei ole pakko.
         success: function(data,status){
-            console.log(data);
-
+             $scope.$apply(function(){              // apply kertoo että data on latautunut 
+                $scope.person.headers = Object.keys(data.rows[0]);
+                $scope.person.actual_data = data.rows;
+            });
         },
         //kysely epäonnistuu
         error: function(hrx, status, errorThrown){

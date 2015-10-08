@@ -6,12 +6,25 @@
     </head>
     <body>
         <div ng-controller="personController">
-            <p>Controller data: {{person.some_data}}</p>
-            <p>Controller data: {{person.age}}</p>
+            <table>
+                <tr > 
+                    <th ng-repeat="head in person.headers" ng-if="!$first" >{{head}}</th><!-- person.headers on haluttu taulukko. head on muuttuja, nimi vapaasti itse kekstitty -->
+                </tr>
+                <tr ng-repeat="data in person.actual_data">
+                    <td>{{data.name}}</td>
+                    <td>{{data.address}}</td>
+                    <td>{{data.age}}</td>
+                </tr>
+            </table>
+            
+            <ul>
+                <li ng-repeat="data in person.actual_data">{{data.name}} {{data.address}}</li>
+            </ul>
+            
         </div>
-        <input type="text" ng-model="person_name"/>
+        <input type="text" ng-model="echo_taulu"/>
         <br/>
-        <p>You typed: {{person_name}}</p>
+        <p>You typed: {{echo_taulu}}</p>
         
         <script src="../lib/jquery-2.1.4.js"></script>
         <script src="../lib/angular.min.js"></script>
