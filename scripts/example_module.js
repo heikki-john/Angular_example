@@ -28,7 +28,8 @@ my_module.controller('personController', ['$scope', function($scope){
 //tämä tapa ei ole suojattu minimointipakkaustyökalua vastaan
 my_module.controller('personController', function($scope, personFactory){
     $scope.person = {};
-    $scope.person.data = [];
+   // $scope.person.data = []; //muutos kun factroysta otetaan data, muutettu rivi alla
+    $scope.person.data = personFactory.getData();
     $scope.person.addPerson = function(){
         console.log('You pressed save!');
         var tempData = {
@@ -37,8 +38,9 @@ my_module.controller('personController', function($scope, personFactory){
             age: $scope.person.age
         };
         
-        $scope.person.data.push(tempData);
-        console.log($scope.person.data);
+        //$scope.person.data.push(tempData); //alla factroryyn tallentaminen
+        personFactory.addData(tempData);
+
     };
     
 });
