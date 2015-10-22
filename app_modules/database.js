@@ -8,6 +8,24 @@ mongoose.connect(uri, function(bad, good){
    }
     else{
         console.log("Connected to DB");
-    }
-    
+    } 
 });
+
+var Friends = mongoose.model('friends',{
+    name:String,
+    address:String,
+    age: {type: Number, min: 0 },
+    car: String
+});
+
+var User = mongoose.model('user',{
+    username: {type: String, unique: true },
+    password: String
+});
+
+var temp = new Friends();
+temp.name = 'Vauva';
+temp.address = 'Vastasyntynyt';
+temp.age = 1;
+temp.car = "Toyota";
+temp.save();
