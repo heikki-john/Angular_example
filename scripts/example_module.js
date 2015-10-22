@@ -26,7 +26,7 @@ my_module.controller('personController', ['$scope', function($scope){
 }]);
 */
 //tämä tapa ei ole suojattu minimointipakkaustyökalua vastaan
-my_module.controller('personController', function($scope, personFactory){
+my_module.controller('personController', function($scope, personFactory /*,  personService */){
     $scope.person = {};
    // $scope.person.data = []; //muutos kun factroysta otetaan data, muutettu rivi alla
     $scope.person.data = personFactory.getData();
@@ -45,7 +45,7 @@ my_module.controller('personController', function($scope, personFactory){
     
 });
 
-//Create a factrory. Factory is sigleton, meaning there is only one instance of it.
+//Create a factrory. Factory is singleton, meaning there is only one instance of it.
 //jotta factoryn saa käyttöön controllerissa niin täytyy se laittaa kontrollorein parametriksi
 my_module.factory('personFactory', function(){
     var my_factory = {};
@@ -62,8 +62,15 @@ my_module.factory('personFactory', function(){
     return my_factory; //Factoryn pitää aina palauttaa factory objekti, muuten se ei toimi
 });
 
-
-
+/* service . ota käyttöön controllerissa */
+/*
+my_module.service('personService', function()){
+    this.name = "heikki";
+    this.doSomething = function(){
+        console.log("Hello world");   
+    }
+}
+*/
 
 
 

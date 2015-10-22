@@ -1,3 +1,11 @@
+
+NODE JS
+************
+Serverin automaattisen käynnistämisen työkalun asentamimen
+console$> npm install nodemon -g
+serverin käynnistys tämän jälkeen komennolla: nodemon app.js
+
+
 piirakka koko jaettu summa, siitä sitten oma osuus
 
 
