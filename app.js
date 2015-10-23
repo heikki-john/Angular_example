@@ -1,4 +1,5 @@
 var express = require('express'); //tämä moduuli pitää asentaa erikseen
+var bodyParser = require('body-parser');
 var path = require('path'); //ei tarvi asentaa erikseen kun kuuluu node pakettiin
 var example = require('./app_modules/example'); //ladataan oma moduuli app_modules hakemistosta
 var database = require('./app_modules/database');
@@ -20,6 +21,8 @@ app.use(function(req,res,next){
 app.use(express.static(path.join(__dirname, 'views'))); // Tässä pyyntö root folderiin, voisi kirjoittaa myös .use('/', ...)
 app.use('/lib', express.static(path.join(__dirname, 'lib')));
 app.use('/scripts', express.static(path.join(__dirname, 'scripts')));
+
+app.use(bodyParser());
 
 app.use('/friend', friend_rest); //Middleware ehtii eli routtaa haluttuun rest funktioon moduulissa friends_rest tms.
 

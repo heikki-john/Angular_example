@@ -1,0 +1,6 @@
+POST medotin teko. Bobyparseri kaivaa post metodista sisällön
+
+Tee kotona UI:sta tallennus tietokantaan.
+-implementoi vaikka ekka addFriend friends.js lähtetään liikenteeseen.
+-friends_rest.js kutsu post medotille.
+-example_modulessa personFactroryn addData tyhjäksi ja sitten sinne resurssi post-datalle joka tallenetaan tietokantaan 
