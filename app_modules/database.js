@@ -25,5 +25,5 @@ var User = mongoose.model('user',{
 
 
 //======================DB EXPORTS======================================
-exports.Friend = Friends:
+exports.Friend = Friends;
 exports.User = User;
