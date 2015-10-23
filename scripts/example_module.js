@@ -1,5 +1,5 @@
 //this is our first module
-var my_module = angular.module("root_module",['ngRoute']);
+var my_module = angular.module("root_module",['ngRoute', 'ngResource']);
 
 //After creating module you can add controllers, factories etc for it...
 
@@ -29,7 +29,11 @@ my_module.controller('personController', ['$scope', function($scope){
 my_module.controller('personController', function($scope, personFactory /*,  personService */){
     $scope.person = {};
    // $scope.person.data = []; //muutos kun factroysta otetaan data, muutettu rivi alla
-    $scope.person.data = personFactory.getData();
+    
+    personFactory.getData().then(function(data){
+        $scope.person.data = data;
+    });
+    
     $scope.person.addPerson = function(){
         console.log('You pressed save!');
         var tempData = {
@@ -47,7 +51,7 @@ my_module.controller('personController', function($scope, personFactory /*,  per
 
 //Create a factrory. Factory is singleton, meaning there is only one instance of it.
 //jotta factoryn saa käyttöön controllerissa niin täytyy se laittaa kontrollorein parametriksi
-my_module.factory('personFactory', function(){
+my_module.factory('personFactory', function($resource){
     var my_factory = {};
     my_factory.data = [];
     
@@ -56,7 +60,9 @@ my_module.factory('personFactory', function(){
     }
     
     my_factory.getData = function(){
-        return my_factory.data;
+        var req = $resource('/friend', {}, {'get': {method:'GET'}});
+        
+        return req.query().$promise;
     }
     
     return my_factory; //Factoryn pitää aina palauttaa factory objekti, muuten se ei toimi
