@@ -11,11 +11,11 @@ mongoose.connect(uri, function(bad, good){
     } 
 });
 
+//======================DB MODELS COLLECTIONS TMS TIETOKANTAMALLIT=====================
 var Friends = mongoose.model('friends',{
     name:String,
     address:String,
     age: {type: Number, min: 0 },
-    car: String
 });
 
 var User = mongoose.model('user',{
@@ -23,9 +23,7 @@ var User = mongoose.model('user',{
     password: String
 });
 
-var temp = new Friends();
-temp.name = 'Vauva';
-temp.address = 'Vastasyntynyt';
-temp.age = 1;
-temp.car = "Toyota";
-temp.save();
+
+//======================DB EXPORTS======================================
+exports.Friend = Friends:
+exports.User = User;
