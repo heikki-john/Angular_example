@@ -10,15 +10,16 @@ router.get('/', function(req,res){
 });
 
 router.post('/', function(req,res){
-        
+    console.log(req.body);
+    friends.addFriend(req,res);
 });
 
 router.put('/', function(req,res){
-        
+
 });
 
 router.delete('/', function(req,res){
-        
+    friends.deleteFriend(req,res);
 });
 
 module.exports = router;

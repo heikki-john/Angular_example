@@ -3,6 +3,15 @@ var friends = require('./database');
 //this funtion add new friend to database
 exports.addFriend = function(req,res){
     
+    var temp = new friends.Friend(req.body);
+    temp.save(function(err){
+        if(err){
+            res.send("Error saving person")
+        }
+        else{
+            res.send("New friend added")
+        }
+    });
 }
 
 //this funtion update friend to database
@@ -12,7 +21,16 @@ exports.updateFriend = function(req,res){
 
 //this funtion delete friend from database
 exports.deleteFriend = function(req,res){
-    
+    console.log(req.query._id);
+    friends.Friend.remove({_id:req.query._id}, function(err){
+        
+        if (err) {
+            res.send("delete error");        
+        }
+        else{
+            res.send("Delete success");
+        }
+    });
 }
 
 //this funtion gets all friends from database

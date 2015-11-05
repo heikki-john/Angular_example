@@ -1,0 +1,23 @@
+form{
+    width: 200px;
+    margin: 20px auto;  /* auto keskittää, jakaa vasemman ja oikean puoliksi */
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+h4{
+    color: aqua
+}
+
+body{
+    
+    background-color: azure; 
+}
+
+.table{
+    
+    width: 50%;
+    max-width: 50%;
+    font-style: oblique;
+}

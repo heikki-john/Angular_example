@@ -43,8 +43,25 @@ my_module.controller('personController', function($scope, personFactory /*,  per
         };
         
         //$scope.person.data.push(tempData); //alla factroryyn tallentaminen
-        personFactory.addData(tempData);
-
+        personFactory.addData(tempData).then(function(data){
+            console.log(data);
+        });
+    };
+    
+    $scope.person.deletePerson = function(id){
+        
+        //tällä rivillä saadaan näytöstä ilman refressiä poistettua
+        for(var i = 0; i < $scope.person.data.length; i++)
+            {
+                if($scope.person.data[i]._id === id){
+                    $scope.person.data.splice(i,1);
+                    break;
+                }
+            }
+        
+        personFactory.deleteData(id).then(function(result){
+            console.log(result);            
+        });
     };
     
 });
@@ -56,13 +73,20 @@ my_module.factory('personFactory', function($resource){
     my_factory.data = [];
     
     my_factory.addData = function(person){
-        my_factory.data.push(person);   
+        //my_factory.data.push(person);   
+        var req = $resource('/friend', {},{'post':{method:'POST'}});
+        return req.post(person).$promise;
     }
     
     my_factory.getData = function(){
-        var req = $resource('/friend', {}, {'get': {method:'GET'}});
+        var req = $resource('/friend', {}, {'get': {method:'GET'}}); // {'get': {method:'GET'}} voi olla pelkästään myös {} toimii silti
         
         return req.query().$promise;
+    }
+    
+    my_factory.deleteData = function(id){
+        var req = $resource('/friend/',{_id:id},{'delete':{method: 'DELETE'}});
+        return req.delete().$promise;
     }
     
     return my_factory; //Factoryn pitää aina palauttaa factory objekti, muuten se ei toimi

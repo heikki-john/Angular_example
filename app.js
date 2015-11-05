@@ -21,21 +21,14 @@ app.use(function(req,res,next){
 app.use(express.static(path.join(__dirname, 'views'))); // Tässä pyyntö root folderiin, voisi kirjoittaa myös .use('/', ...)
 app.use('/lib', express.static(path.join(__dirname, 'lib')));
 app.use('/scripts', express.static(path.join(__dirname, 'scripts')));
+app.use('/css', express.static(path.join(__dirname, 'css')));
 
-app.use(bodyParser());
+app.use(bodyParser.json());
 
 app.use('/friend', friend_rest); //Middleware ehtii eli routtaa haluttuun rest funktioon moduulissa friends_rest tms.
 
 
 //========================================ROUTERS============================================
-app.get('/persons', function (req, res) {
-  res.send("you ask persons");
-});
 
-/*
-app.get('/hello', function (req, res) {
-  res.send('Hello NodeJS');
-})
-*/
 
 app.listen(3000);
