@@ -10,7 +10,6 @@ router.get('/', function(req,res){
 });
 
 router.post('/', function(req,res){
-    console.log(req.body);
     friends.addFriend(req,res);
 });
 
