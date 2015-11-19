@@ -1,2 +1,20 @@
 
 Yritä tehtä PUT
+nodemon app.js serverin käynnistys
+
+update open github
+-uusi näkymä view3
+-lisätään example_module.js update conteksti, jonka kautta päästään uuden vievin näkymään
+-näkymään kaksi lisätään painike update
+ *silloin kutsutaan updateperson jossa käynnistetään toiminta
+- kun käyttäjä painaa update painiketta mennään example_module.js updatePerson funktioon. 
+* siinä etsitään oikea person. ja dataUpdata factoryssa lisätään.
+* person factoryyn listätty uusi muuttuja dataupdate
+-location opjektilla käsketään mennä pathiin update. Se trikkeroi routerista updaten -> ladataan updateConrolleri käyttöön ja view3
+-updateControlleri hakee factrorysta data ja liitettän tiedot update objektiin
+-näkymään renderoidessä kysytään factrorylta tellenttetut tiedot
+(PUT medotilla päivitetään tietoa)
+-Friend_rest.js otetaan kiinni put-pyyntö ja 
+-Friends.js exports.updateFriends haetaan id:lla haluttu objekti päivitetään ja lähetään response käyttäjälle
+
+

@@ -53,6 +53,7 @@ my_module.controller('personController', function($scope, personFactory /*,  per
         //tällä rivillä saadaan näytöstä ilman refressiä poistettua
         for(var i = 0; i < $scope.person.data.length; i++)
             {
+                // === estää javascriptiä tekemään tyyppimuunnoksen
                 if($scope.person.data[i]._id === id){
                     $scope.person.data.splice(i,1);
                     break;
